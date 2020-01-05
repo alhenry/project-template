@@ -1,0 +1,4 @@
+Species	count	mean_sepal_length	median_sepal_width	min_petal_length	max_petal_width
+setosa	50	5.006	3.4	1	0.6
+versicolor	50	5.936	2.8	3	1.8
+virginica	50	6.588	3	4.5	2.5

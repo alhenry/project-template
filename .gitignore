@@ -1,0 +1,8 @@
+# uncomment the following to ignore specific folder / files
+
+# data/
+# admin/
+# results/
+# *.tsv
+# *.csv
+# writing/
