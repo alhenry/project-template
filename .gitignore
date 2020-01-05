@@ -1,5 +1,6 @@
 # uncomment the following to ignore specific folder / files
 
+.ipynb_checkpoints
 # data/
 # admin/
 # results/
