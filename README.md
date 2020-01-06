@@ -1,13 +1,18 @@
-# Title of the Project
+# My awesome research project
 
 ## Description
-<short description of the project>
+A project aiming to investigate the relationship between X and Y using Z method
 
 ## Directory structure
 The following directory structure is adapted from [A Quick Guide to Organizing Computational Biology Projects
 ](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)(Noble WS, 2009).
 
-The core principles are: consistent, simple, scalable, and portable.
+The core principles are:
+ * **Consistent** – follow certain structure and format
+ * **Simple** – easy to follow and clear enough for someone unfamiliar with the project
+ * **Scalable** – can be used for small or big projects of many kinds
+ * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
+
 
 An example of minimal project structure is given in this template, and outlined below:
 
@@ -37,8 +42,23 @@ An example of minimal project structure is given in this template, and outlined 
 |   |   └── figure1.png
 |   └── 2020-02/
 |
-└── writing/
-    ├── main_text.gdoc
-    ├── supplementary_table.gsheet
-    └── analysis_plan.gdoc
+├── writing/
+|   ├── main_text.gdoc
+|   ├── supplementary_table.gsheet
+|   └── analysis_plan.gdoc
+|
+└── ...
 ```
+
+Notes on folder structure:
+*  **admin** –
+
+* **data**
+
+* **analysis**
+
+* **results**
+
+* **writing**
+
+## Computing Platforms
