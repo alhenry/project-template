@@ -36,6 +36,8 @@ An example of minimal project structure is given in this template, and outlined 
 |   |   └── s02.2_figure1.ipynb
 |   └── 2020-02/
 |
+├── scratch/
+|
 ├── results/
 |   ├── 2020-01/
 |   |   ├── table1.tsv
@@ -50,15 +52,17 @@ An example of minimal project structure is given in this template, and outlined 
 └── ...
 ```
 
-Notes on folder structure:
-*  **admin** –
+## Notes on folder structure:
+*  **admin** - Meeting notes and other admin documents such as applications or ethical approvals
 
-* **data**
+* **data** - Read only data files used as input for analysis and results 
 
-* **analysis**
+* **analysis** - Analysis scripts 
 
-* **results**
+* **scratch** - Scratch space for temporary output files generated as part of the analysis, can be deleted before archiving
 
-* **writing**
+* **results** - Result files
+
+* **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply) 
 
 ## Computing Platforms
