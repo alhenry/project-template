@@ -1,7 +1,11 @@
-# My awesome research project
+# Project Template
 
-## Description
-A project aiming to investigate the relationship between X and Y using Z method
+Project template for computational work
+
+## References
+- [A Quick Guide to Organizing Computational Biology Projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
+- [MIT Comm Kit - File Structure](https://mitcommlab.mit.edu/broad/commkit/file-structure/)
+- [The Turing Way - Research Data Management](https://the-turing-way.netlify.com/rdm/rdm.html)
 
 ## Directory structure
 The following directory structure is adapted from [A Quick Guide to Organizing Computational Biology Projects
@@ -55,14 +59,14 @@ An example of minimal project structure is given in this template, and outlined 
 ## Notes on folder structure:
 *  **admin** - Meeting notes and other admin documents such as applications or ethical approvals
 
-* **data** - Read only data files used as input for analysis and results 
+* **data** - Read only data files used as input for analysis and results
 
-* **analysis** - Analysis scripts 
+* **analysis** - Analysis scripts
 
 * **scratch** - Scratch space for temporary output files generated as part of the analysis, can be deleted before archiving
 
 * **results** - Result files
 
-* **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply) 
+* **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply)
 
 ## Computing Platforms
