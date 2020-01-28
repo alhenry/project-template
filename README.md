@@ -15,39 +15,67 @@ A moderately opinionated file structure template for computational research proj
 1. [Optional] [rclone](https://rclone.org/)
 
 ## Recommended Workflow
-#### Initial set up
+### Initial set up
 1. Prepare the pre-requisites softwares and accounts above
 1. Generate a new [GitHub personal access token](https://github.com/settings/tokens/new), fill in the **Note** field and tick **repo** box under **Select scopes**, copy the generated token
     ![](img/github_token.png)
 
-#### Set up local project directory and GitHub
+### Set up local project directory and GitHub
 1. Open Command Line Interface (e.g. Terminal in Mac)
 1. Change directory to parent project directory
 
     `cd my_directory`
 
-    ***NOTE*** if [using Google Backup & Sync](#using-google-backup-&-sync), this directory should be located inside the local copy of Google Drive
+    ***NOTE*** if [using Google Backup & Sync](#sync-to-google-drive), this directory should be located inside the local copy of Google Drive
 
-1. Run cookiecutter pointing to project template git repo
+1. Run `cookiecutter` pointing to project template git repo
 
-    `cookiecutter https://github.com/alhenry/project-template.git`
-1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#github-personal-access-token). Leave blank to use the default value (shown in square bracket).
+    `cookiecutter https://github.com/Hermes-consortium/project-template.git`
+1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
 
-#### Sync to Google Drive
-##### Using Google Backup & Sync
+### Sync to Google Drive
+#### Using Google Backup & Sync
 1. Create a local copy of Google Drive with [Google Backup & Sync](https://support.google.com/drive/answer/2374987?#)
-1. [Set up local project directory with `cookiecutter`](#set-up-local-project-directory-and-github)
+1. Follow steps above to [set up local project directory with `cookiecutter`](#set-up-local-project-directory-and-github)
 1. Choose [what to sync](https://support.google.com/drive/answer/2374987?) (default to sync everything)
 
-##### Using rclone
+#### Using rclone
 1. Open Command Line Interface (e.g. Terminal in Mac)
-1. Run cookiecutter pointing to project template git repo
-
-`cookiecutter https://github.com/alhenry/project-template.git`
-1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#github-personal-access-token). Leave blank to use the default value (shown in square bracket).
 1. Set up a new [rclone remote Google Drive](https://rclone.org/drive/)
+1. Follow steps above to [set up local project directory with `cookiecutter`](#set-up-local-project-directory-and-github)
+1. Sync the new local project directory to Google Drive
+    * Sync everything
 
-1.
+        ```
+        cd my_project_local
+        rclone sync . my_GDrive:my_project_GDrive --create-empty-src-dirs -u
+        ```
+    * Selective sync with `--filter-from` flag
+        ```
+        cd my_project_local
+        rclone sync . my_GDrive:my_project_GDrive --create-empty-src-dirs \
+            -u --filter-from .rclone_filter
+        ```
+
+1. Subsequent sync from/to Google Drive
+    * Sync from Google Drive
+
+    ```
+    rclone copy my_GDrive:my_project_GDrive my_project_local \
+        -u --filter-from .rclone_filter
+    ```
+
+    * Sync to Google Drive
+    ```
+    rclone copy my_project_local my_GDrive:my_project_GDrive \
+        -u --filter-from .rclone_filter
+    ```
+*NOTE*:
+* `-u` update only (skip newer files)
+*  `.rclone_filter` is an arbitrary-named hidden file to pass [filtering rules](https://rclone.org/filtering/) to `--filter-from` argument. Think of it as `.gitignore` for `rclone copy`
+* It may be helpful to change `rclone copy` with `rclone sync`
+
+
 
 
 
@@ -56,7 +84,7 @@ A well-structured project sparks joy.
 
 <img src="https://media3.giphy.com/media/PmABbbUe3IqUKSOIBV/giphy.gif?cid=790b761117d6314a9dcc65f822296eaa41fcc220d29fb6c6&rid=giphy.gif" width="auto" height="200"/>
 
-It saves time, improves reproducibility, and enable both ourselves and others to quickly navigate through the project.
+It saves time, improves reproducibility, and enable both ourselves and others to quickly navigate through the project.˜
 
 Reproducible research and file organisation have been discussed at length elsewhere (see [References](#references)).
 However, as modern computational research project comes in all forms and sizes,  project templates are often opinionated and project-specific.

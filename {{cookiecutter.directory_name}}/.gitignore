@@ -1,7 +1,13 @@
+# OS & software specific files
 .Rproj.user
 .Rhistory
 .DS_Store
 Icon?
+
+# create git-include/git-exclude subdirectory to force include/exclude file
+# e.g. if data/ is specified in this .gitignore file,
+# data/git-include/ will still be included in the commit,
+# but the rest of the data/ will be ignored
 !git-include/
 git-exclude/
 
