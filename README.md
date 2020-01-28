@@ -14,7 +14,7 @@ The core principles of this template are:
  * **Scalable** – can be used for small or big projects of many kinds
  * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
 
- This template is *not* intended to be a rigid project skeleton with strict formatting and rules, but rather a quick-to-build body with detachable parts.
+ This template is *not* intended to be a rigid project skeleton with strict formatting and rules, but rather a quick-to-build prototype body with detachable parts.
 
  The aims of this template is *to save time, improve reproducibility, and enable easy and quick navigation through the project*.
 
