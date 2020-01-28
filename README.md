@@ -1,24 +1,84 @@
 # Project Template
 
-Project template for computational work
+A moderately opinionated file structure template for computational research project
 
-## References
-- [A Quick Guide to Organizing Computational Biology Projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
-- [MIT Comm Kit - File Structure](https://mitcommlab.mit.edu/broad/commkit/file-structure/)
-- [The Turing Way - Research Data Management](https://the-turing-way.netlify.com/rdm/rdm.html)
+## Pre-requisites
+1. [python 3](https://docs.python.org/3/using/index.html)
+1. [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
+1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+1. [GitHub account](https://help.github.com/en/articles/signing-up-for-a-new-github-account)
+  (*Note*: UCL staff & students can register for a [free pro GitHub account](https://www.ucl.ac.uk/isd/services/research-it/research-software-development-tools/support-for-ucl-researchers-to-use-github))
+1. [Google account](https://support.google.com/accounts/answer/27441?hl=en)
+1. [Google Backup & Sync](https://www.google.com/drive/download/backup-and-sync/) (Windows / Mac only)
+1. [ssh](https://www.ssh.com/ssh)
+1. [Optional] [sshfs](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh)
+1. [Optional] [rclone](https://rclone.org/)
 
-## Directory structure
-The following directory structure is adapted from [A Quick Guide to Organizing Computational Biology Projects
-](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)(Noble WS, 2009).
+## Recommended Workflow
+#### Initial set up
+1. Prepare the pre-requisites softwares and accounts above
+1. Generate a new [GitHub personal access token](https://github.com/settings/tokens/new), fill in the **Note** field and tick **repo** box under **Select scopes**, copy the generated token
+    ![](img/github_token.png)
 
-The core principles are:
- * **Consistent** – follow certain structure and format
+#### Set up local project directory and GitHub
+1. Open Command Line Interface (e.g. Terminal in Mac)
+1. Change directory to parent project directory
+
+    `cd my_directory`
+
+    ***NOTE*** if [using Google Backup & Sync](#using-google-backup-&-sync), this directory should be located inside the local copy of Google Drive
+
+1. Run cookiecutter pointing to project template git repo
+
+    `cookiecutter https://github.com/alhenry/project-template.git`
+1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#github-personal-access-token). Leave blank to use the default value (shown in square bracket).
+
+#### Sync to Google Drive
+##### Using Google Backup & Sync
+1. Create a local copy of Google Drive with [Google Backup & Sync](https://support.google.com/drive/answer/2374987?#)
+1. [Set up local project directory with `cookiecutter`](#set-up-local-project-directory-and-github)
+1. Choose [what to sync](https://support.google.com/drive/answer/2374987?) (default to sync everything)
+
+##### Using rclone
+1. Open Command Line Interface (e.g. Terminal in Mac)
+1. Run cookiecutter pointing to project template git repo
+
+`cookiecutter https://github.com/alhenry/project-template.git`
+1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#github-personal-access-token). Leave blank to use the default value (shown in square bracket).
+1. Set up a new [rclone remote Google Drive](https://rclone.org/drive/)
+
+1.
+
+
+
+## Philosopy
+A well-structured project sparks joy.
+
+<img src="https://media3.giphy.com/media/PmABbbUe3IqUKSOIBV/giphy.gif?cid=790b761117d6314a9dcc65f822296eaa41fcc220d29fb6c6&rid=giphy.gif" width="auto" height="200"/>
+
+It saves time, improves reproducibility, and enable both ourselves and others to quickly navigate through the project.
+
+Reproducible research and file organisation have been discussed at length elsewhere (see [References](#references)).
+However, as modern computational research project comes in all forms and sizes,  project templates are often opinionated and project-specific.
+
+Here, we provide _best practice recommendations_ for a typical computational academic research project aiming to produce a written report such as journal article, master dissertation, or PhD thesis.
+
+The core principles of this template are:
+ * **Consistent** – follow certain structure and format (see Coding style)
  * **Simple** – easy to follow and clear enough for someone unfamiliar with the project
  * **Scalable** – can be used for small or big projects of many kinds
  * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
 
 
-An example of minimal project structure is given in this template, and outlined below:
+## References
+- [A Quick Guide to Organizing Computational Biology Projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
+- [MIT Comm Kit - File Structure](https://mitcommlab.mit.edu/broad/commkit/file-structure/)
+- [The Turing Way - Research Data Management](https://the-turing-way.netlify.com/rdm/rdm.html)
+- [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+- [R ProjectTemplate](http://projecttemplate.net/index.html)
+
+## Directory structure
+The default project structure is outlined below:
 
 ```
 ./
@@ -33,14 +93,14 @@ An example of minimal project structure is given in this template, and outlined 
 |   |   └── mtcars.csv
 |   └── 2020-02/
 |   
-├── analysis/
+├── scripts/
 |   ├── 2020-01/
 |   |   ├── s01_data_generation.sh
 |   |   ├── s02.1_calculate_desc_stats_table1.R
 |   |   └── s02.2_figure1.ipynb
 |   └── 2020-02/
 |
-├── scratch/
+├── exploratory/
 |
 ├── results/
 |   ├── 2020-01/
@@ -56,17 +116,67 @@ An example of minimal project structure is given in this template, and outlined 
 └── ...
 ```
 
-## Notes on folder structure:
-*  **admin** - Meeting notes and other admin documents such as applications or ethical approvals
+#### Note
+* **.git** - hidden folder for git version control
+
+*  **admin** - Admin documents, e.g. meeting notes, applications, ethical approvals, MTA
 
 * **data** - Read only data files used as input for analysis and results
 
-* **analysis** - Analysis scripts
+* **scripts** - Analysis scripts
 
-* **scratch** - Scratch space for temporary output files generated as part of the analysis, can be deleted before archiving
+* **exploratory** - Scratch space for temporary output files / exploratory data analysis generated as part of the analysis, can be deleted before archiving
 
-* **results** - Result files
+* **results** - output of data analysis e.g. tables, figures, jupyter notebook
 
 * **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply)
 
+<Note on date / chronological subfolders>
+
 ## Computing Platforms
+
+This project template utilises the following platforms:
+* **local** - local machine e.g. personal laptop, UCL machine
+
+* **remote** - remote computing platform, typically a headless machine in HPC cluster (e.g. [UCL Myriad](https://wiki.rc.ucl.ac.uk/wiki/Myriad), UCL CS Cluster) or cloud computing services (e.g. [Amazon Web Service](https://aws.amazon.com/), [Google Computing Platform](https://cloud.google.com/)
+
+* **GDrive** - Google Drive
+
+* **GitHub** - GitHub
+
+* **storage** - data storage space (for backup only) e.g. [UCL Research Data Storage Service](https://www.ucl.ac.uk/isd/services/research-it/research-data-storage-service), [UCL S: drive](https://www.ucl.ac.uk/isd/support-staff/s-drive-documentation/s-drive-how-it-works-permissions)
+
+
+#### Which folders live in which platforms?
+|             | local | remote | GDrive | GitHub | storage |
+|-------------|:-----:|:------:|:------:|:------:|:-------:|
+| **.git**        |   ✅   |    ✅   |        |    ✅   |         |
+| **admin**       |   ✅   |        |    ✅   |        |         |
+| **data**        |       |    ✅   |        |        |    ✅    |
+| **scripts**     |   ✅   |    ✅   |        |    ✅   |         |
+| **exploratory** |   ✅   |    ✅   |        |        |         |
+| **results**     |       |    ✅   |    ✅   |        |         |
+| **writing**     |   ✅   |        |    ✅   |        |         |
+
+
+#### How to transfer / sync files across platforms?
+|         | local         | remote        | GDrive                                | GitHub                                | storage       |
+|---------|---------------|---------------|---------------------------------------|---------------------------------------|---------------|
+| **local**   |               | ssh           | rclone<br>GBS                         | git                                   | ssh<br>rclone |
+| **remote**  | ssh<br>rclone |               | rclone                                | git                                   | ssh<br>rclone |
+| **GDrive**  | rclone<br>GBS | rclone        |                                       | rclone (via local)<br>GBS (via local) | rclone        |
+| **GitHub**  | git           | git           | rclone (via local)<br>GBS (via local) |                                       | git           |
+| **storage** | ssh<br>rclone | ssh<br>rclone | rclone                                | git                                   |               |
+
+*Note*
+
+* **ssh** - [Secure Shell protocol](https://www.ssh.com/ssh), also see [**sshfs**](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh) for mounting remote file system to local machine via ssh protocol
+* **GBS** - [Google Backup & Sync](https://www.google.com/drive/download/backup-and-sync/)
+* [**git**](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [**rclone**](https://rclone.org/)
+
+
+## Coding Styles
+- General recommendations: [MIT Comm Kit - Coding and Comment Style](https://mitcommlab.mit.edu/broad/commkit/coding-and-comment-style/)
+- Python: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+- R: [tydyverse style guide](https://style.tidyverse.org/)
