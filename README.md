@@ -2,6 +2,27 @@
 
 A moderately opinionated file structure template for computational research project
 
+## Philosopy
+Reproducibility and file organization have been continuously discussed across research communities (see [References](#references)).
+However, as modern computational research project comes in all forms and sizes,  project templates are often opinionated and project-specific.
+
+Here, we provide _best practice recommendations_ for a typical computational academic research project aiming to produce a written report such as journal article, master dissertation, or PhD thesis.
+
+The core principles of this template are:
+ * **Consistent** – follow certain structure and format (see Coding style)
+ * **Simple** – easy to follow and clear enough for someone unfamiliar with the project
+ * **Scalable** – can be used for small or big projects of many kinds
+ * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
+
+ This template is *not* intended to be a rigid project skeleton with strict formatting and rules, but rather a quick-to-build body with detachable parts.
+
+ The aims of this template is *to save time, improve reproducibility, and enable easy and quick navigation through the project*.
+
+ Finally, a well-structured project sparks joy :sparkles:
+
+ <img src="https://media3.giphy.com/media/PmABbbUe3IqUKSOIBV/giphy.gif?cid=790b761117d6314a9dcc65f822296eaa41fcc220d29fb6c6&rid=giphy.gif" width="auto" height="200"/>
+
+
 ## Pre-requisites
 1. [python 3](https://docs.python.org/3/using/index.html)
 1. [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
@@ -73,37 +94,10 @@ A moderately opinionated file structure template for computational research proj
 *NOTE*:
 * `-u` update only (skip newer files)
 *  `.rclone_filter` is an arbitrary-named hidden file to pass [filtering rules](https://rclone.org/filtering/) to `--filter-from` argument. Think of it as `.gitignore` for `rclone copy`
-* It may be helpful to change `rclone copy` with `rclone sync`
+* `rclone copy` can be replaced with `rclone sync` to make sure both local and remote directories have the same contents, ***HOWEVER*** `rclone sync` can *overwrite* the destination folder contents so please proceed with caution.
+* ***Tip***: add `-n` or `--dry-run` flag before syncing to check which files are copied / replaced.
 
-
-
-
-
-## Philosopy
-A well-structured project sparks joy.
-
-<img src="https://media3.giphy.com/media/PmABbbUe3IqUKSOIBV/giphy.gif?cid=790b761117d6314a9dcc65f822296eaa41fcc220d29fb6c6&rid=giphy.gif" width="auto" height="200"/>
-
-It saves time, improves reproducibility, and enable both ourselves and others to quickly navigate through the project.˜
-
-Reproducible research and file organisation have been discussed at length elsewhere (see [References](#references)).
-However, as modern computational research project comes in all forms and sizes,  project templates are often opinionated and project-specific.
-
-Here, we provide _best practice recommendations_ for a typical computational academic research project aiming to produce a written report such as journal article, master dissertation, or PhD thesis.
-
-The core principles of this template are:
- * **Consistent** – follow certain structure and format (see Coding style)
- * **Simple** – easy to follow and clear enough for someone unfamiliar with the project
- * **Scalable** – can be used for small or big projects of many kinds
- * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
-
-
-## References
-- [A Quick Guide to Organizing Computational Biology Projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
-- [MIT Comm Kit - File Structure](https://mitcommlab.mit.edu/broad/commkit/file-structure/)
-- [The Turing Way - Research Data Management](https://the-turing-way.netlify.com/rdm/rdm.html)
-- [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
-- [R ProjectTemplate](http://projecttemplate.net/index.html)
+#### <To-do: Google Backup & Sync vs. rclone>
 
 ## Directory structure
 The default project structure is outlined below:
@@ -204,7 +198,19 @@ This project template utilises the following platforms:
 * [**rclone**](https://rclone.org/)
 
 
-## Coding Styles
+
+## References
+**File organization**
+- [A Quick Guide to Organizing Computational Biology Projects](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
+- [MIT Comm Kit - File Structure](https://mitcommlab.mit.edu/broad/commkit/file-structure/)
+- [The Turing Way - Research Data Management](https://the-turing-way.netlify.com/rdm/rdm.html)
+
+**Coding style**
 - General recommendations: [MIT Comm Kit - Coding and Comment Style](https://mitcommlab.mit.edu/broad/commkit/coding-and-comment-style/)
 - Python: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - R: [tydyverse style guide](https://style.tidyverse.org/)
+
+
+**Other template**
+- [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+- [R ProjectTemplate](http://projecttemplate.net/index.html)
