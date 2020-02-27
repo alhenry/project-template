@@ -75,7 +75,7 @@ The core principles of this template are:
         ```
         cd my_project_local
         rclone sync . my_GDrive:my_project_GDrive --create-empty-src-dirs \
-            -u --filter-from .rclone_filter
+            -u --filter-from .rclone-filter
         ```
 
 1. Subsequent sync from/to Google Drive
@@ -83,17 +83,17 @@ The core principles of this template are:
 
     ```
     rclone copy my_GDrive:my_project_GDrive my_project_local \
-        -u --filter-from .rclone_filter
+        -u --filter-from .rclone-filter
     ```
 
     * Sync to Google Drive
     ```
     rclone copy my_project_local my_GDrive:my_project_GDrive \
-        -u --filter-from .rclone_filter
+        -u --filter-from .rclone-filter
     ```
 *NOTE*:
 * `-u` update only (skip newer files)
-*  `.rclone_filter` is an arbitrary-named hidden file to pass [filtering rules](https://rclone.org/filtering/) to `--filter-from` argument. Think of it as `.gitignore` for `rclone copy`
+*  `.rclone-filter` is an arbitrary-named hidden file to pass [filtering rules](https://rclone.org/filtering/) to `--filter-from` argument. Think of it as `.gitignore` for `rclone copy`
 * `rclone copy` can be replaced with `rclone sync` to make sure both local and remote directories have the same contents, ***HOWEVER*** `rclone sync` can *overwrite* the destination folder contents so please proceed with caution.
 * ***Tip***: add `-n` or `--dry-run` flag before syncing to check which files are copied / replaced.
 
