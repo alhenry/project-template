@@ -1,0 +1,20 @@
+- .DS_Store
+- .git/
+- .git*
+- .rclone_filter
+
+# create remote-include/remote-exclude subdirectory to force include/exclude files
+# e.g. if data/ is specified in this .rclone_filter file,
+# data/remote-include/ will still be included in the sync,
+# but the rest of the data/ will be ignored
++ remote-include/
+- remote-exclude/
+
++ /admin/**
+- /data/**
+- /scripts/**
+- /scratch/**
++ /results/**
++ /writing/**
++ /presentation/
+- *
