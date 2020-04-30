@@ -51,7 +51,7 @@ The core principles of this template are:
 
 1. Run `cookiecutter` pointing to project template git repo
 
-    `cookiecutter https://github.com/Hermes-consortium/project-template.git`
+    `cookiecutter https://github.com/alhenry/project-template.git`
 1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
 
 ### Sync to Google Drive
