@@ -12,7 +12,7 @@ Icon?
 git-exclude/
 
 admin/
-data/
+resources/
 # scripts/
 scratch/
 results/
