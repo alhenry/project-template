@@ -37,11 +37,25 @@ The core principles of this template are:
 
 ## Recommended Workflow
 ### Initial set up
-1. Prepare the pre-requisites softwares and accounts above
+1. Prepare the pre-requisites softwares and accounts above. If installing cookiecutter onto myriad is causing issues, undertake the following steps:
+     1. SSH into myriad
+     2. `module load python3/3.8` - this step was undertaken because the default python is 2.7.9 (using `python --version`)
+     3. `python3 -m ensurepip --upgrade` - not actually necessary for me but if pip isn't working this ensures `pip` is bootstrapped into the Python installation
+     4. `pip install cookiecutter` - Installs cookiecutter
+ 
+### SSH Method
+
+1. Set up an SSH key following instructions found here: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent. Note: If you are on Myriad this will require a **different** ssh key to your local machine.
+2. Add this SSH key to your github account.  
+3. Run `cookiecutter` pointing to project template git repo
+
+    `cookiecutter git@github.com:ihi-comp-med/project-template.git`
+4. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
+
+### HTTPS Method
+Issues may arise with this method as github doesn't seem to recognise when a personal access token is used.
 1. Generate a new [GitHub personal access token](https://github.com/settings/tokens/new), fill in the **Note** field and tick **repo** box under **Select scopes**, copy the generated token
     ![](img/github_token.png)
-
-### Set up local project directory and GitHub
 1. Open Command Line Interface (e.g. Terminal in Mac)
 1. Change directory to parent project directory
 
@@ -52,7 +66,7 @@ The core principles of this template are:
 1. Run `cookiecutter` pointing to project template git repo
 
     `cookiecutter https://github.com/Hermes-consortium/project-template.git`
-1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
+1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available). Leave blank to use the default value (shown in square bracket).
 
 ### Sync to Google Drive
 #### Using Google Backup & Sync
