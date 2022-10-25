@@ -2,28 +2,81 @@
 
 A moderately opinionated file structure template for computational research project
 
-## Philosopy
-Reproducibility and file organization have been continuously discussed across research communities (see [References](#references)).
-However, as modern computational research project comes in all forms and sizes,  project templates are often opinionated and project-specific.
+## Background
+Reproducibility and file organization have been continuously discussed across computational research communities (see [References](#references)).
+However, it remains a challenge to implement a one-size-fits-all standard
+as research projects come in all forms and sizes and continuously evolve.
+The following template offers _general recommendations_ to quick start a typical computational research project
+while allowing some flexibility to add, remove, and edit its parts as needed.
 
-Here, we provide _best practice recommendations_ for a typical computational academic research project aiming to produce a written report such as journal article, master dissertation, or PhD thesis.
-
-The core principles of this template are:
- * **Consistent** – follow certain structure and format (see Coding style)
- * **Simple** – easy to follow and clear enough for someone unfamiliar with the project
+This template is designed to be:
+ * **Consistent** – follow certain [structure](directory-structure)
+ * **Simple** – easy to start and navigate
  * **Scalable** – can be used for small or big projects of many kinds
- * **Portable** – easy to import, export, and sync to various computing platforms (see [Computing platforms](#computing-platforms))
+ * **Portable** – enable synchronization across various [computing platforms](#computing-platforms)
 
- This template is *not* intended to be a rigid project skeleton with strict formatting and rules, but rather a quick-to-build prototype body with detachable parts.
+This template is intended to be *not* a rigid set of rules, but a starting point to build upon.
 
- The aims of this template is *to save time, improve reproducibility, and enable easy and quick navigation through the project*.
+## Aims & Objectives
+The main aim of this project template is
+**to allow a quick and smooth onboarding / handover for a new person**
 
- Finally, a well-structured project sparks joy :sparkles:
+Please keep this in mind when making additions / changes to the initial template.
+When in doubt, **document what you did** (write README file, comment codes, etc)
 
- <img src="https://media3.giphy.com/media/PmABbbUe3IqUKSOIBV/giphy.gif?cid=790b761117d6314a9dcc65f822296eaa41fcc220d29fb6c6&rid=giphy.gif" width="auto" height="200"/>
+## Directory structure
+The default project structure is outlined below
+(please refer to [Project Template](https://www.notion.so/comp-med-lab/Project-Template-a0ac2a2b4a6942ef8c66f5780679511b) page on Notion for latest version:
 
+```
+pxxx-<projid>
+├─ .gitignore
+├─ README.md
+├─ LICENSE.md
+├─ resources
+├─ scripts
+├─ results
+│  ├─ figures
+│  └─ tables
+└─ workflow
+    ├─ rules
+    │  ├─ module1.smk
+    │  └─ module2.smk
+    ├─ envs
+    │  ├─ tool1.yaml
+    │  └─ tool2.yaml
+    ├─ scripts
+    │  ├─ script1.py
+    │  └─ script2.R
+    ├─ notebooks
+    │  ├─ notebook1.py.ipynb
+    │  └─ notebook2.r.ipynb
+    ├─ report
+    │  ├─ plot1.rst
+    │  └─ plot2.rst
+    └─ Snakefile
+```
 
-## Pre-requisites
+#### Note
+* **.git** - hidden folder for git version control
+
+*  **admin** - Admin documents, e.g. meeting notes, applications, ethical approvals, MTA
+
+* **data** - Read only data files used as input for analysis and results
+
+* **scripts** - Analysis scripts
+
+* **exploratory** - Scratch space for temporary output files / exploratory data analysis generated as part of the analysis, can be deleted before archiving
+
+* **results** - output of data analysis e.g. tables, figures, jupyter notebook
+
+* **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply)
+
+## Quick start with cookiecutter
+This git repository contains a ![cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) template
+that can be used to automate creation of project with the structure above, if preferred.
+
+### Pre-requisites
 1. [python 3](https://docs.python.org/3/using/index.html)
 1. [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
 1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -35,13 +88,26 @@ The core principles of this template are:
 1. [Optional] [sshfs](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh)
 1. [Optional] [rclone](https://rclone.org/)
 
-## Recommended Workflow
 ### Initial set up
-1. Prepare the pre-requisites softwares and accounts above
+1. Prepare the pre-requisites softwares and accounts above. If installing cookiecutter onto myriad is causing issues, undertake the following steps:
+     1. SSH into myriad
+     2. `module load python3/3.8` - this step was undertaken because the default python is 2.7.9 (using `python --version`)
+     3. `python3 -m ensurepip --upgrade` - not actually necessary for me but if pip isn't working this ensures `pip` is bootstrapped into the Python installation
+     4. `pip install cookiecutter` - Installs cookiecutter
+ 
+### SSH Method
+
+1. Set up an SSH key following instructions found here: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent. Note: If you are on Myriad this will require a **different** ssh key to your local machine.
+2. Add this SSH key to your github account.  
+3. Run `cookiecutter` pointing to project template git repo
+
+    `cookiecutter git@github.com:ihi-comp-med/project-template.git`
+4. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
+
+### HTTPS Method
+Issues may arise with this method as github doesn't seem to recognise when a personal access token is used.
 1. Generate a new [GitHub personal access token](https://github.com/settings/tokens/new), fill in the **Note** field and tick **repo** box under **Select scopes**, copy the generated token
     ![](img/github_token.png)
-
-### Set up local project directory and GitHub
 1. Open Command Line Interface (e.g. Terminal in Mac)
 1. Change directory to parent project directory
 
@@ -52,7 +118,7 @@ The core principles of this template are:
 1. Run `cookiecutter` pointing to project template git repo
 
     `cookiecutter https://github.com/Hermes-consortium/project-template.git`
-1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available), and [GitHub personal access token](#initial-set-up). Leave blank to use the default value (shown in square bracket).
+1. When prompted, enter the project title, project directory name, GitHub username,  GitHub repository name (make sure name is available). Leave blank to use the default value (shown in square bracket).
 
 ### Sync to Google Drive
 #### Using Google Backup & Sync
@@ -99,59 +165,6 @@ The core principles of this template are:
 
 #### <To-do: Google Backup & Sync vs. rclone>
 
-## Directory structure
-The default project structure is outlined below:
-
-```
-./
-├── .git/
-|
-├── admin/
-|   └── meeting_notes.gsheet
-|
-├── data/
-|   ├── 2020-01/
-|   |   ├── iris.tsv
-|   |   └── mtcars.csv
-|   └── 2020-02/
-|   
-├── scripts/
-|   ├── 2020-01/
-|   |   ├── s01_data_generation.sh
-|   |   ├── s02.1_calculate_desc_stats_table1.R
-|   |   └── s02.2_figure1.ipynb
-|   └── 2020-02/
-|
-├── exploratory/
-|
-├── results/
-|   ├── 2020-01/
-|   |   ├── table1.tsv
-|   |   └── figure1.png
-|   └── 2020-02/
-|
-├── writing/
-|   ├── main_text.gdoc
-|   ├── supplementary_table.gsheet
-|   └── analysis_plan.gdoc
-|
-└── ...
-```
-
-#### Note
-* **.git** - hidden folder for git version control
-
-*  **admin** - Admin documents, e.g. meeting notes, applications, ethical approvals, MTA
-
-* **data** - Read only data files used as input for analysis and results
-
-* **scripts** - Analysis scripts
-
-* **exploratory** - Scratch space for temporary output files / exploratory data analysis generated as part of the analysis, can be deleted before archiving
-
-* **results** - output of data analysis e.g. tables, figures, jupyter notebook
-
-* **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply)
 
 <Note on date / chronological subfolders>
 
@@ -160,17 +173,17 @@ The default project structure is outlined below:
 This project template utilises the following platforms:
 * **local** - local machine e.g. personal laptop, UCL machine
 
-* **remote** - remote computing platform, typically a headless machine in HPC cluster (e.g. [UCL Myriad](https://wiki.rc.ucl.ac.uk/wiki/Myriad), UCL CS Cluster) or cloud computing services (e.g. [Amazon Web Service](https://aws.amazon.com/), [Google Computing Platform](https://cloud.google.com/)
+* **compute** - remote computing platform, typically a headless machine in HPC cluster (e.g. [UCL Myriad](https://wiki.rc.ucl.ac.uk/wiki/Myriad), UCL CS Cluster) or cloud computing services (e.g. [Amazon Web Service](https://aws.amazon.com/), [Google Computing Platform](https://cloud.google.com/)
 
-* **GDrive** - Google Drive
+* **drive** - remote disk drive e.g. Google Drive / OneDrive
 
-* **GitHub** - GitHub
+* **code** - remote code repository e.g. GitHub / GitLab
 
-* **storage** - data storage space (for backup only) e.g. [UCL Research Data Storage Service](https://www.ucl.ac.uk/isd/services/research-it/research-data-storage-service), [UCL S: drive](https://www.ucl.ac.uk/isd/support-staff/s-drive-documentation/s-drive-how-it-works-permissions)
+* **storage** - remote storage (for backup / archive) e.g. [UCL Research Data Storage Service](https://www.ucl.ac.uk/isd/services/research-it/research-data-storage-service), [UCL S: drive](https://www.ucl.ac.uk/isd/support-staff/s-drive-documentation/s-drive-how-it-works-permissions)
 
 
 #### Which folders live in which platforms?
-|             | local | remote | GDrive | GitHub | storage |
+|             | local | compute | drive | code | storage |
 |-------------|:-----:|:------:|:------:|:------:|:-------:|
 | **.git**        |   ✅   |    ✅   |        |    ✅   |         |
 | **admin**       |   ✅   |        |    ✅   |        |         |
@@ -182,12 +195,12 @@ This project template utilises the following platforms:
 
 
 #### How to transfer / sync files across platforms?
-|         | local         | remote        | GDrive                                | GitHub                                | storage       |
+|         | local         | compute        | drive                                | code                                | storage       |
 |---------|---------------|---------------|---------------------------------------|---------------------------------------|---------------|
-| **local**   |               | ssh           | rclone<br>GBS                         | git                                   | ssh<br>rclone |
-| **remote**  | ssh<br>rclone |               | rclone                                | git                                   | ssh<br>rclone |
-| **GDrive**  | rclone<br>GBS | rclone        |                                       | rclone (via local)<br>GBS (via local) | rclone        |
-| **GitHub**  | git           | git           | rclone (via local)<br>GBS (via local) |                                       | git           |
+| **local**   |               | ssh           | rclone<br>GBS/OneDrive                         | git                                   | ssh<br>rclone |
+| **compute**  | ssh<br>rclone |               | rclone                                | git                                   | ssh<br>rclone |
+| **drive**  | rclone<br>GBS/OneDrive | rclone        |                                       | rclone (via local)<br>GBS/OneDrive (via local) | rclone        |
+| **code**  | git           | git           | rclone (via local)<br>GBS/OneDrive (via local) |                                       | git           |
 | **storage** | ssh<br>rclone | ssh<br>rclone | rclone                                | git                                   |               |
 
 *Note*
