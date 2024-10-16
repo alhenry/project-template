@@ -2,20 +2,4 @@
 
 .DS_Store
 .ipynb_checkpoints
-.snakemake
-.snakemake/**
 
-results/**
-resources/**
-logs/**
-job_logs/**
-data/**
-writing/**
-admin/**
-
-# data/
-# admin/
-# results/
-# *.tsv
-# *.csv
-# writing/
