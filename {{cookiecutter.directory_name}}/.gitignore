@@ -13,9 +13,12 @@ git-exclude/
 
 admin/
 resources/
+job_logs/
 # scripts/
 scratch/
 results/
+figures/
+tables/
 writing/
 
 # uncomment the following to ignore specific folder / files

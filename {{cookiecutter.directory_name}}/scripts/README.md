@@ -6,3 +6,5 @@ Scripts used to run a workflow related to snakemake should be placed inside `wor
 By default, this repository is synced to GitHub (controlled via `.gitignore`)
 
 Use this README to describe directory structure and contents.
+
+Some example scripts are provided

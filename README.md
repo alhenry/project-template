@@ -29,16 +29,14 @@ The default project structure is outlined below
 
 ```
 <project_name>
-├─ .gitignore
 ├─ admin
 ├─ figures
 ├─ job_logs
 ├─ README.md
+├─ resources
 ├─ results
 ├─ scripts
-├─ results
-│  ├─ figures
-│  └─ tables
+├─ tables
 └─ workflow
     ├─ rules
     │  ├─ module1.smk
@@ -55,21 +53,21 @@ The default project structure is outlined below
     ├─ report
     │  ├─ plot1.rst
     │  └─ plot2.rst
-    └─ Snakefile
+    └─ snakefile
 ```
 
 #### Note
-* **.git** - hidden folder for git version control
-
 *  **admin** - Admin documents, e.g. meeting notes, applications, ethical approvals, MTA
 
-* **data** - Read only data files used as input for analysis and results
+* **resources** - Read only data files / external softwares used as input for analysis and results
 
-* **scripts** - Analysis scripts
+* **scripts** - _Ad hoc_ analysis scripts
 
-* **exploratory** - Scratch space for temporary output files / exploratory data analysis generated as part of the analysis, can be deleted before archiving
+* **results** - large results / intermediate data files
 
-* **results** - output of data analysis e.g. tables, figures, jupyter notebook
+* **figures** - figures from analysis
+
+* **tables** - tables from analysis
 
 * **writing** - Analysis write ups, subfolders can be created specifically for early analysis drafts and later on manuscript drafts and final editions ready for submission to specific journals (this can also include reviewer comments and reply)
 
@@ -79,12 +77,9 @@ that can be used to automate creation of project with the structure above, if pr
 
 ### Pre-requisites
 1. [python 3](https://docs.python.org/3/using/index.html)
-1. [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
+1. [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html)
 1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 1. [GitHub account](https://help.github.com/en/articles/signing-up-for-a-new-github-account)
-  (*Note*: UCL staff & students can register for a [free pro GitHub account](https://www.ucl.ac.uk/isd/services/research-it/research-software-development-tools/support-for-ucl-researchers-to-use-github))
-1. [Google account](https://support.google.com/accounts/answer/27441?hl=en)
-1. [Google Backup & Sync](https://www.google.com/drive/download/backup-and-sync/) (Windows / Mac only)
 1. [ssh](https://www.ssh.com/ssh)
 1. [Optional] [sshfs](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh)
 1. [Optional] [rclone](https://rclone.org/)

@@ -2,6 +2,6 @@
     "project_title": "My Research Project",
     "directory_name": "{{ cookiecutter.project_title|lower|replace(' ', '-') }}",
     "GitHub_repo_name": "{{ cookiecutter.project_title|lower|replace(' ', '-') }}",
-    "GitHub_username": "GitHub_user",
-    "GitHub_token": "32-character token"
+    "GitHub_username": "{{ cookiecutter.GitHub_username }}",
+    "GitHub_token": "{{ cookiecutter.GitHub_token }}"
 }
