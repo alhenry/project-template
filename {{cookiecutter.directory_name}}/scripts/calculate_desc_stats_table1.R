@@ -2,7 +2,7 @@
 
 library(tidyverse)
 
-data <- read_tsv("data/2020-01/iris.tsv")
+data <- read_tsv("resources/iris.tsv")
 
 summary <- data %>%
   group_by(Species) %>% 
@@ -12,4 +12,4 @@ summary <- data %>%
             min_petal_length = min(Petal.Length),
             max_petal_width = max(Petal.Width))
 
-write_tsv(summary, "results/2020-01/table1.tsv")
+write_tsv(summary, "figures/table1.tsv")

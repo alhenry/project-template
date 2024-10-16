@@ -26,14 +26,15 @@ When in doubt, **document what you did** (write README file, comment codes, etc)
 
 ## Directory structure
 The default project structure is outlined below
-(please refer to [Project Template](https://www.notion.so/comp-med-lab/Project-Template-a0ac2a2b4a6942ef8c66f5780679511b) page on Notion for latest version:
 
 ```
-pxxx-<projid>
+<project_name>
 ├─ .gitignore
+├─ admin
+├─ figures
+├─ job_logs
 ├─ README.md
-├─ LICENSE.md
-├─ resources
+├─ results
 ├─ scripts
 ├─ results
 │  ├─ figures
@@ -45,7 +46,7 @@ pxxx-<projid>
     ├─ envs
     │  ├─ tool1.yaml
     │  └─ tool2.yaml
-    ├─ scripts
+    ├─ snakescripts
     │  ├─ script1.py
     │  └─ script2.R
     ├─ notebooks

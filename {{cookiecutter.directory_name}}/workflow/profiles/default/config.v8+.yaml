@@ -1,0 +1,31 @@
+# Settings to run
+use-singularity: True
+use-conda: True
+executor: cluster-generic
+cluster-generic-submit-cmd:
+  qsub
+    -N {rule}-{wildcards}
+    -V
+    -cwd
+    -o job_logs
+    -e job_logs
+    -l mem_requested={resources.mem_mb}M
+    -l h_rt={resources.time}
+    -pe smp {resources.nodes}
+cluster-generic-cancel-cmd: qdel {rule}-{wildcards}
+# cluster-generic-status-cmd: qstat -j {rule}-{wildcards}
+default-resources:
+  time: 4:00:00
+  nodes: 4
+  mem_mb: 8000
+jobs: 50
+local-cores: 4
+latency-wait: 10
+keep-going: True
+rerun-incomplete: True
+rerun-triggers: mtime
+printshellcmds: True
+# restart-times: 0
+# max-jobs-per-second: 10
+# max-status-checks-per-second: 1
+# scheduler: greedy
