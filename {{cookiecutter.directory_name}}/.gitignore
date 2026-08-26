@@ -11,15 +11,26 @@ Icon?
 !git-include/
 git-exclude/
 
-admin/
 resources/
-job_logs/
 # scripts/
 scratch/
-results/
-figures/
-tables/
-writing/
+
+# Ignore the contents of these directories but keep their README.md stubs tracked
+# (NOTE: use "dir/*" + "!dir/README.md", not "dir/" + "!dir/README.md" — git will not
+# descend into a directory that's ignored outright, so a bare "dir/" makes any
+# negation of a file inside it a no-op)
+admin/*
+!admin/README.md
+job_logs/*
+!job_logs/README.md
+results/*
+!results/README.md
+figures/*
+!figures/README.md
+tables/*
+!tables/README.md
+writing/*
+!writing/README.md
 
 # uncomment the following to ignore specific folder / files
 
